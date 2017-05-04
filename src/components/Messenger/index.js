@@ -23,8 +23,8 @@ export default class Messenger extends Component {
       db.ref('messages').on('value', snapshot => {
         let messages = _.values(snapshot.val())
                         .map(obj => ({msg: obj.text, user: obj.user}));
-                        
-        console.log(messages);
+
+        this.setState({messages});
       });
     }
 
@@ -54,9 +54,11 @@ export default class Messenger extends Component {
     }
 
     renderMessageList() {
-      return this.state.messages.map((msg, index) => {
+      return this.state.messages.map(({msg, user}, index) => {
         return (
           <li key={index}>
+            <img src={user.photoURL} alt={user.uid}/>
+            {user.displayName}:
             {msg}
           </li>
         )
