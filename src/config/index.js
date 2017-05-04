@@ -1,6 +1,6 @@
 const config = {
   firebase: {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "fir-chat-2e7c3.firebaseapp.com",
     databaseURL: "https://fir-chat-2e7c3.firebaseio.com",
     projectId: "fir-chat-2e7c3",
