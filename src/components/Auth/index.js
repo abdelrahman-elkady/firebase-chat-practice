@@ -15,6 +15,14 @@ export default class Auth extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.updateUser(user);
+      }
+    });
+  }
+
   handleClick() {
     let provider = new firebase.auth.FacebookAuthProvider();
 
