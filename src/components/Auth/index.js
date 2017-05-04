@@ -20,7 +20,7 @@ export default class Auth extends Component {
 
     firebase.auth().signInWithPopup(provider).then(result => {
       let user = result.user;
-      this.props.updateUser({user});
+      this.props.updateUser(user);
     }).catch(function(error) {
       console.error(error);
     });

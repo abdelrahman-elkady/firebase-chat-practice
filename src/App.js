@@ -4,10 +4,7 @@ import './App.css';
 import Messenger from './components/Messenger';
 import Auth from './components/Auth';
 
-import config from './config';
-
 import _ from 'lodash';
-import firebase from 'firebase';
 
 class App extends Component {
 
@@ -22,10 +19,6 @@ class App extends Component {
 
   }
 
-  componentDidMount() {
-    firebase.initializeApp(config.firebase);
-  }
-
   updateUser(user) {
     this.setState({user});
   }
@@ -36,7 +29,7 @@ class App extends Component {
 
   render() {
     if (this.isAuthenticated()) {
-        return <Messenger />;
+        return <Messenger user={this.state.user}/>;
     }
 
     return <Auth updateUser={this.updateUser} />;
